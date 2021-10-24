@@ -2,15 +2,15 @@ package br.com.magnasistemas.bicicletario.dto;
 
 import java.util.List;
 
-import br.com.magnasistemas.bicicletario.entity.Bicicleta;
-import br.com.magnasistemas.bicicletario.entity.StatusBicicletario;
+import br.com.magnasistemas.bicicletario.entity.BicicletaEntity;
+import br.com.magnasistemas.bicicletario.status.BicicletarioStatus;
 
 public class BicicletarioDTO {
 
 	private String nome;
 	private String cep;
-	private List<Bicicleta> bicicletas;
-	private StatusBicicletario status = StatusBicicletario.DISPONIVEL;
+	private List<BicicletaEntity> bicicletas;
+	private BicicletarioStatus status = BicicletarioStatus.ABERTO;
 
 	public String getNome() {
 		return nome;
@@ -28,19 +28,19 @@ public class BicicletarioDTO {
 		this.cep = cep;
 	}
 
-	public List<Bicicleta> getBicicletas() {
+	public List<BicicletaEntity> getBicicletas() {
 		return bicicletas;
 	}
 
-	public void setBicicletas(List<Bicicleta> bicicletas) {
+	public void setBicicletas(List<BicicletaEntity> bicicletas) {
 		this.bicicletas = bicicletas;
 	}
 
-	public StatusBicicletario getStatus() {
+	public BicicletarioStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusBicicletario status) {
+	public void setStatus(BicicletarioStatus status) {
 		this.status = status;
 	}
 

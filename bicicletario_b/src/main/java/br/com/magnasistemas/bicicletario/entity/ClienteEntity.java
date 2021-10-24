@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Cliente {
+public class ClienteEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Cliente {
 	private String celular;
 	private String cep;
 	@ManyToOne
-	private Bicicleta locacaoBicicleta;
+	private BicicletaEntity locacaoBicicleta;
 
 
 

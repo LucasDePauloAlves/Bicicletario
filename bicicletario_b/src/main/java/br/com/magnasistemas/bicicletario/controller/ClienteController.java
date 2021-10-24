@@ -16,7 +16,7 @@ import br.com.magnasistemas.bicicletario.services.ClienteService;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Clientes {
+public class ClienteController {
 
 	@Autowired
 	ClienteService clienteService;

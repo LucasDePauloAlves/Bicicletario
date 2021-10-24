@@ -7,15 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.magnasistemas.bicicletario.status.BicicletaStatus;
+
 @Entity
-public class Bicicleta {
+public class BicicletaEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private int aro;
 	@Enumerated(EnumType.STRING)
-	private StatusBicicleta status = StatusBicicleta.DISPONIVEL;
+	private BicicletaStatus status = BicicletaStatus.DISPONIVEL;
 
 	public long getId() {
 		return id;
@@ -33,11 +35,11 @@ public class Bicicleta {
 		this.aro = aro;
 	}
 
-	public StatusBicicleta getStatus() {
+	public BicicletaStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusBicicleta status) {
+	public void setStatus(BicicletaStatus status) {
 		this.status = status;
 	}
 

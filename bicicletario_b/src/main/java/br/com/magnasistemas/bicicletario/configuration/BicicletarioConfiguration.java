@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.magnasistemas.bicicletario.dto.BicicletarioDTO;
-import br.com.magnasistemas.bicicletario.entity.Bicicletario;
+import br.com.magnasistemas.bicicletario.entity.BicicletarioEntity;
 
 @Configuration
-public class BicicletarioConfig {
+public class BicicletarioConfiguration {
 
 	@Bean("mapperBicicletario")
 	public ModelMapper modelMapper() {
@@ -19,17 +19,17 @@ public class BicicletarioConfig {
 		return modelMapper;
 	}
 
-	public BicicletarioDTO toModel(Bicicletario bicicletario) {
+	public BicicletarioDTO toModel(BicicletarioEntity bicicletario) {
 		ModelMapper modelMapper = modelMapper();
 		return modelMapper.map(bicicletario, BicicletarioDTO.class);
 	}
 
-	public Bicicletario toEntidade(BicicletarioDTO bicicletarioDTO) {
+	public BicicletarioEntity toEntidade(BicicletarioDTO bicicletarioDTO) {
 		ModelMapper modelMapper = modelMapper();
-		return modelMapper.map(bicicletarioDTO, Bicicletario.class);
+		return modelMapper.map(bicicletarioDTO, BicicletarioEntity.class);
 	}
 
-	public List<BicicletarioDTO> toListModel(List<Bicicletario> bicicletarios) {
+	public List<BicicletarioDTO> toListModel(List<BicicletarioEntity> bicicletarios) {
 		return bicicletarios.stream().map(bicis -> toModel(bicis)).collect(Collectors.toList());
 	}
 }

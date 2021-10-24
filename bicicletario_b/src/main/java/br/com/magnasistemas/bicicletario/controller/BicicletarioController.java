@@ -15,7 +15,7 @@ import br.com.magnasistemas.bicicletario.dto.BicicletarioDTO;
 import br.com.magnasistemas.bicicletario.services.BicicletarioService;
 
 @RestController
-public class Bicicletarios {
+public class BicicletarioController {
 	
 	@Autowired
 	BicicletarioService bicicletarioService;

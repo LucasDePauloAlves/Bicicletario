@@ -1,11 +1,11 @@
 package br.com.magnasistemas.bicicletario.dto;
 
-import br.com.magnasistemas.bicicletario.entity.StatusBicicleta;
+import br.com.magnasistemas.bicicletario.status.BicicletaStatus;
 
 public class BicicletaDTO {
 
 	private int aro;
-	private StatusBicicleta status;
+	private BicicletaStatus status;
 	
 	public int getAro() {
 		return aro;
@@ -13,10 +13,10 @@ public class BicicletaDTO {
 	public void setAro(int aro) {
 		this.aro = aro;
 	}
-	public StatusBicicleta getStatus() {
+	public BicicletaStatus getStatus() {
 		return status;
 	}
-	public void setStatus(StatusBicicleta status) {
+	public void setStatus(BicicletaStatus status) {
 		this.status = status;
 	}
 

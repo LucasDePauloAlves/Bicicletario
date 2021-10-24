@@ -1,6 +1,7 @@
 package br.com.magnasistemas.bicicletario.entity;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import br.com.magnasistemas.bicicletario.status.BicicletarioStatus;
+
 @Entity
-public class Bicicletario {
+public class BicicletarioEntity {
 
 	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -19,10 +22,10 @@ public class Bicicletario {
 	private String cep;
 	
 	@OneToMany
-	private List<Bicicleta> bicicletas = new ArrayList<>();
+	private List<BicicletaEntity> bicicletas = new ArrayList<>();
 	
 	@Enumerated(EnumType.STRING)
-	private StatusBicicletario status = StatusBicicletario.DISPONIVEL;
+	private BicicletarioStatus status = BicicletarioStatus.ABERTO;
 
 	public long getId() {
 		return id;
@@ -48,19 +51,19 @@ public class Bicicletario {
 		this.cep = cep;
 	}
 
-	public List<Bicicleta> getBicicletas() {
+	public List<BicicletaEntity> getBicicletas() {
 		return bicicletas;
 	}
 
-	public void setBicicletas(List<Bicicleta> bicicletas) {
+	public void setBicicletas(List<BicicletaEntity> bicicletas) {
 		this.bicicletas = bicicletas;
 	}
 
-	public StatusBicicletario getStatus() {
+	public BicicletarioStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusBicicletario status) {
+	public void setStatus(BicicletarioStatus status) {
 		this.status = status;
 	}
 

@@ -1,13 +1,15 @@
 package br.com.magnasistemas.bicicletario.dto;
 
-import br.com.magnasistemas.bicicletario.entity.Bicicleta;
+import java.util.List;
+
+import br.com.magnasistemas.bicicletario.entity.BicicletaEntity;
 
 public class ClienteDTO {
 	private String nome;
 	private int idade;
 	private String celular;
 	private String cep;
-	private Bicicleta possuiBicicleta;
+	private List<BicicletaDTO> transporteBicicleta;
 
 	public String getNome() {
 		return nome;
@@ -41,11 +43,11 @@ public class ClienteDTO {
 		this.cep = cep;
 	}
 
-	public Bicicleta getPossuiBicicleta() {
-		return possuiBicicleta;
+	public List<BicicletaDTO> getTransporteBicicleta() {
+		return transporteBicicleta;
 	}
 
-	public void setPossuiBicicleta(Bicicleta idBicicleta) {		
-		this.possuiBicicleta = idBicicleta;
+	public void setTransporteBicicleta(BicicletaEntity idBicicleta) {		
+		this.transporteBicicleta = (List<BicicletaDTO>) idBicicleta;
 	}
 }

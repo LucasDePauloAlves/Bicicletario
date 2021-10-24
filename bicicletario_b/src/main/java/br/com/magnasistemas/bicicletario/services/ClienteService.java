@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.magnasistemas.bicicletario.configuration.ClienteConfig;
+import br.com.magnasistemas.bicicletario.configuration.ClienteConfiguration;
 import br.com.magnasistemas.bicicletario.dto.ClienteDTO;
-import br.com.magnasistemas.bicicletario.entity.Cliente;
+import br.com.magnasistemas.bicicletario.entity.ClienteEntity;
 import br.com.magnasistemas.bicicletario.repository.ClienteRepository;
 
 @Service
@@ -18,7 +18,7 @@ public class ClienteService {
 	ClienteRepository repository;
 
 	@Autowired
-	ClienteConfig mapperCLiente;
+	ClienteConfiguration mapperCLiente;
 
 	public ClienteDTO postCliente(ClienteDTO clienteDTO) {
 		repository.save(mapperCLiente.toEntidade(clienteDTO));
@@ -27,9 +27,9 @@ public class ClienteService {
 
 	public ClienteDTO getIdCliente(long id) {
 		ClienteDTO clienteDTO = null;
-		Optional<Cliente> clienteId = repository.findById(id);
+		Optional<ClienteEntity> clienteId = repository.findById(id);
 		if (clienteId.isPresent()) {
-			Cliente cliente = clienteId.get();
+			ClienteEntity cliente = clienteId.get();
 			clienteDTO = mapperCLiente.toModel(cliente);
 			return clienteDTO;
 		}
@@ -37,7 +37,7 @@ public class ClienteService {
 	}
 
 	public Iterable<ClienteDTO> getCliente() {
-		return mapperCLiente.toListModel((List<Cliente>) repository.findAll());
+		return mapperCLiente.toListModel((List<ClienteEntity>) repository.findAll());
 	}
 
 	public void deleteCliente(long id) {
@@ -45,9 +45,9 @@ public class ClienteService {
 	}
 
 	public ClienteDTO putCliente(long id, ClienteDTO clienteDTO) {
-		Optional<Cliente> clienteId = repository.findById(id);
+		Optional<ClienteEntity> clienteId = repository.findById(id);
 		if (clienteId.isPresent()) {
-			Cliente entidade = mapperCLiente.toEntidade(clienteDTO);
+			ClienteEntity entidade = mapperCLiente.toEntidade(clienteDTO);
 			entidade.setId(id);
 			repository.save(entidade);
 			return clienteDTO;

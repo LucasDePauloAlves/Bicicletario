@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.magnasistemas.bicicletario.configuration.BicicletaConfig;
+import br.com.magnasistemas.bicicletario.configuration.BicicletaConfiguration;
 import br.com.magnasistemas.bicicletario.dto.BicicletaDTO;
-import br.com.magnasistemas.bicicletario.entity.Bicicleta;
+import br.com.magnasistemas.bicicletario.entity.BicicletaEntity;
 import br.com.magnasistemas.bicicletario.repository.BicicletaRepository;
 
 @Service
@@ -18,7 +18,7 @@ public class BicicletaService {
 	BicicletaRepository repository;
 	
 	@Autowired
-	BicicletaConfig mapperBIcicleta;
+	BicicletaConfiguration mapperBIcicleta;
 	
 	public BicicletaDTO postBicicleta(BicicletaDTO bicicletaDTO) {
 		repository.save(mapperBIcicleta.toEntidade(bicicletaDTO));
@@ -26,7 +26,7 @@ public class BicicletaService {
 	}
 	
 	public Iterable<BicicletaDTO> getBicicleta() {
-		return mapperBIcicleta.toListModel((List<Bicicleta>) repository.findAll());
+		return mapperBIcicleta.toListModel((List<BicicletaEntity>) repository.findAll());
 	}
 
 	public void deleteBicicleta(long id) {
@@ -36,16 +36,16 @@ public class BicicletaService {
 	public BicicletaDTO getIdBicicleta(long id) {
 		BicicletaDTO bicicletaDTO = null;
 		
-		Optional<Bicicleta> bicicletaId = repository.findById(id);
-		Bicicleta bicicleta = bicicletaId.get();
+		Optional<BicicletaEntity> bicicletaId = repository.findById(id);
+		BicicletaEntity bicicleta = bicicletaId.get();
 		bicicletaDTO = mapperBIcicleta.toModel(bicicleta);
 		return bicicletaDTO;
 	}
 	
 	public BicicletaDTO putBicicleta(long id, BicicletaDTO bicicletaDTO) {
-		Optional<Bicicleta> bicicletaId = repository.findById(id);
+		Optional<BicicletaEntity> bicicletaId = repository.findById(id);
 		if (bicicletaId.isPresent()) {
-			Bicicleta entidade = mapperBIcicleta.toEntidade(bicicletaDTO);
+			BicicletaEntity entidade = mapperBIcicleta.toEntidade(bicicletaDTO);
 			entidade.setId(id);
 			repository.save(entidade);
 			return bicicletaDTO;

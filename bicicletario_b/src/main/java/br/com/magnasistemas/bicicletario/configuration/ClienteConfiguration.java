@@ -7,11 +7,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import br.com.magnasistemas.bicicletario.dto.BicicletaDTO;
 import br.com.magnasistemas.bicicletario.dto.ClienteDTO;
-import br.com.magnasistemas.bicicletario.entity.Cliente;
+import br.com.magnasistemas.bicicletario.entity.ClienteEntity;
 
 @Configuration
-public class ClienteConfig {
+public class ClienteConfiguration {
 
 	@Bean
 	public ModelMapper modelMapper() {
@@ -19,19 +20,22 @@ public class ClienteConfig {
 		return modelMapper;
 	}
 	
-	public ClienteDTO toModel(Cliente cliente){
+	public ClienteDTO toModel(ClienteEntity cliente){
 		ModelMapper modelMapper = modelMapper();
 		return modelMapper.map(cliente, ClienteDTO.class);
 	}
 	
-	public Cliente toEntidade(ClienteDTO clienteDTO) {
+	public ClienteEntity toEntidade(ClienteDTO clienteDTO) {
 		ModelMapper modelMapper = modelMapper();
-		return modelMapper.map(clienteDTO, Cliente.class);
+		return modelMapper.map(clienteDTO, ClienteEntity.class);
 	}
 	
-	public List<ClienteDTO> toListModel(List<Cliente> clientes){
+	public List<ClienteDTO> toListModel(List<ClienteEntity> clientes){
 		return clientes.stream().map(clients -> toModel(clients)).collect(Collectors.toList());
 	}
 	
+	//public List<BicicletaDTO>
+	
+	//List<BicicletaDTO> transporteBicicleta
 	
 }
